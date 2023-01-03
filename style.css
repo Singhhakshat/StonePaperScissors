@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+#container{
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+.StartGameAnimation{
+    animation-name: gameBorder;
+    animation-duration: 1s;
+}
+.flex{
+    display: flex;
+}
+.border{
+    border: 2px solid black;
+}
+#startButton{
+    width: 60vw;
+    height: 10vh;
+    text-align: center;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#gameContainer{
+    display: none;
+    flex-direction: column;
+}
+#round{
+    margin: 20px;
+}
+#game{
+    margin: 20px;
+    height: 50vh;
+}
+#game img{
+    margin: 20px;
+    padding: 10px;
+}
+#scoreBoard{
+    margin: 20px;
+    width: 80vw;
+    height: 10vh;
+}
+
+@keyframes gameBorder {
+    from {
+        width: 60vw;
+        height: 10vh;
+    }
+    to {
+        width: 100vw;
+        height: 100vh;
+    }
+  }

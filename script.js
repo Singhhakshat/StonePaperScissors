@@ -69,5 +69,21 @@ function result(pScore,cScore){
     console.log(`Score: Player-> ${pScore}, Computer-> ${cScore}`)
 }
 
-game()
 
+
+function startAnimation(){
+    const element=document.getElementById("startButton");
+
+    element.classList.add('StartGameAnimation');
+    element.style.height="100vh";
+    element.style.width="100vw";
+
+    document.getElementById("startText").style.display="none";
+    
+    setTimeout(function(){
+        element.classList.remove('StartGameAnimation');
+        document.getElementById("gameContainer").style.display="block";
+    }, 1000);
+
+    
+}

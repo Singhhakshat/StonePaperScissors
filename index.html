@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>StonePaperScissors</title>
 </head>
 <body>
-    <script src="script.js"></script>
+    <div class="flex" id="container">
+        <div id="startButton" class="flex border">
+            <div onclick="startAnimation()" id="startText">Start Game</div>
+            <div id="gameContainer" class="">
+                <h1 id="round" class="border"></h1>
+                <hr>
+                <div id="game" class="">
+                    <h2>choose..</h2>
+                    <img src="media/rock.png" alt="" class="border" onclick="makePlayerSelection(1,0,0)" id="rockSelect">
+                    <img src="media/paper.png" alt="" class="border" onclick="makePlayerSelection(0,1,0)" id="paperSelect">
+                    <img src="media/scissors.png" alt="" class="border" onclick="makePlayerSelection(0,0,1)" id="scissorsSelect">
+                </div>
+                <div id="scoreBoard" class="border flex">
+                    <div id="round1" class="border"></div>
+                    <div id="round2"></div>
+                    <div id="round3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="scr.js"></script>
+    </div>
 </body>
 </html>
