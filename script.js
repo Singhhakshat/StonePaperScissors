@@ -50,7 +50,7 @@ function computerSelection(){
 
 function calcResult(computerSelection,playerSelection){
     let result;
-    if(playerSelection===computerSelection){
+    if(playerSelection==computerSelection){
         result=2;
     }
     else{
