@@ -125,7 +125,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 async function getVal(){
     await sleep(3000)
-     return prompt("Enter your choise: \"Rock\"/ \"paper\"/\"Scissors\"");
+     return prompt("Enter your choise: \"Rock\"/ \"Paper\"/\"Scissors\"");
    
     
 }
