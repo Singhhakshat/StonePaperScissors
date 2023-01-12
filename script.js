@@ -1,13 +1,57 @@
-function computerSelection(){
-    let choices=["Rock", "Paper", "Scissors"]
-    return choices[Math.floor(Math.random()*(2-0+1)+0)]
+const element={
+    startButton: document.getElementById("startButton"),
+
+    roundNumber: document.getElementById("round"),
+
+    stonePicture:document.getElementById("rockImage"),
+    paperPicture:document.getElementById("paperImage"),
+    scissorsPicture:document.getElementById("scissorsImage"),
+    gameScore: document.getElementById("gameScore"),
+    score:{
+        round1:document.getElementById("roundOneImage"),
+        round2:document.getElementById("roundTwoImage"),
+        round3:document.getElementById("roundThreeImage")
+    },
+    show:{
+        show: document.getElementById('show'),
+        playerChoice: document.getElementById('playerChoice'),
+        computerChoice: document.getElementById('computerChoice'),
+        status: document.getElementById('status')
+    },
+    finalMessage: document.getElementById("finalMessage"),
+    finalScore: document.getElementById("finalScore")
+};
+const score={
+    player: 0,
+    computer: 0
 }
 
+// let player='na';
 
-function playRound(playerSelection,computerSelection){
+function startAnimation(){
+
+    element.startButton.classList.add('StartGameAnimation');
+    element.startButton.style.height="100vh";
+    element.startButton.style.width="100vw";
+
+    document.getElementById("startText").style.display="none";
+    
+    setTimeout(function(){
+        element.startButton.classList.remove('StartGameAnimation');
+        document.getElementById("gameContainer").style.display="block";
+    }, 1000);
+    game();
+}
+
+function computerSelection(){
+    let choices=["Rock", "Paper", "Scissors"];
+    return choices[Math.floor(Math.random()*(2-0+1)+0)];
+}
+
+function calcResult(computerSelection,playerSelection){
     let result;
     if(playerSelection===computerSelection){
-        return 2;
+        result=2;
     }
     else{
         if(playerSelection=="Rock"){
@@ -28,62 +72,98 @@ function playRound(playerSelection,computerSelection){
             if(computerSelection=="Paper")
                 result=1;
         }
-        // return result==1?`You Won! ${playerSelection} beats ${computerSelection}`:`You Lose! ${computerSelection} beats ${playerSelection}`;
         return result;
     }
 }
 
-function game(){
-    let playerScore=0;
-    let computerScore=0;
-    for(let i=1;i<=5;i++){
-        console.log(`Score: Player-> ${playerScore}, Computer-> ${computerScore}`)
-        console.log(`Round: ${i}`)
-        let playerChoice=prompt("Enter your choice");
-        let computerChoice=computerSelection()
-        let result= playRound(playerChoice, computerChoice);
+function showScore(round,result, computer, player){
 
-        if(result==1){
-            playerScore++;
-            console.log(`You Won! ${playerChoice} beats ${computerChoice}`)
-        }
-        else if(result==0){
-            computerScore++;
-            console.log(`You Lose! ${computerChoice} beats ${playerChoice}`)
-        }
-        else{
-            console.log("Its a Tie!");
-            i--;
-        }
-    }
-    result(playerScore, computerScore);
-}
-
-function result(pScore,cScore){
-    console.log("Final Result->");
-    if(pScore>=3)
-    console.log("Player Wins!");
+    element.show.playerChoice.innerHTML=`Player Choice: ${player}`;
+    element.show.computerChoice.innerHTML=`Computer Choice: ${computer}`;
+    if(result==1)
+        element.show.status.innerHTML='You Won!';
+    else if(result==0)
+        element.show.status.innerHTML='Computer Won!';
     else
-    console.log("Computer Wins!");
+        element.show.status.innerHTML=`Its a tie -> Play again`;
 
-    console.log(`Score: Player-> ${pScore}, Computer-> ${cScore}`)
+    if(round==1)
+        element.score['round1'].src=(result==1)?'media/won.png':'media/lost.png';
+    if(round==2)
+        element.score['round2'].src=(result==1)?'media/won.png':'media/lost.png';
+    if(round==3)
+        element.score['round3'].src=(result==1)?'media/won.png':'media/lost.png';
 }
 
+function finalResult(){
+    if(score.player>=2)
+        return true;
+    else
+        return false;
+}
 
+function endofGame(){
+    let result=finalResult();
+    element.finalMessage.innerHTML=result?'You won':'Computer Won';
+    element.finalScore.style.backgroundColor=result?'lightgreen':'red';
+    element.show.show.style.display='none';
+    element.finalScore.style.display='block';
+}
 
-function startAnimation(){
-    const element=document.getElementById("startButton");
+// function wait() {
+//     if (player==='na') {
+//         setTimeout(wait, 1000);
+//     } else {
+//       console.log(`playerSelection: ${player}`);
+//     }
+//   }
 
-    element.classList.add('StartGameAnimation');
-    element.style.height="100vh";
-    element.style.width="100vw";
+// function makePlayerSelection(newValue){
+//     player=newValue;
+// }
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-    document.getElementById("startText").style.display="none";
+async function getVal(){
+    await sleep(3000)
+     return prompt("Enter your choise: \"Rock\"/ \"paper\"/\"Scissors\"");
+   
     
+}
+
+async function game(){
+    let i=1;
+    while(i <=3){
+        // makePlayerSelection('na');
+        element.roundNumber.innerHTML=`Round ${i}`;    //showing round number on top.
+        let computer=computerSelection();
+        console.log(computer);
+        
+        await getVal().then(
+            function(value){
+               let result = calcResult(computer, value);
+                console.log(result);
+                if(result==1)
+                    score.player++;
+                else if(result==0)
+                    score.computer++;
+                else{
+                    console.log("Its a Tie!");
+                    i--;
+                }
+                console.log(score);
+                showScore(i,result, computer, value);
+                console.log('end of game function')
+            },
+             function(value){
+              
+             }
+          
+        )
+        
+        i++;
+    }
+
     setTimeout(function(){
-        element.classList.remove('StartGameAnimation');
-        document.getElementById("gameContainer").style.display="block";
-    }, 1000);
-
-    
+        endofGame();
+    }, 500);
 }

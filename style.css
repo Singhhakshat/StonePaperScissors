@@ -36,19 +36,45 @@
 }
 #round{
     margin: 20px;
+    background-color: black;
+    color: white;
 }
 #game{
     margin: 20px;
     height: 50vh;
 }
-#game img{
+/* #game img{
     margin: 20px;
     padding: 10px;
+} */
+#show{
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
 }
+
+.makeSpace{
+    padding: 20px;    
+}
+
 #scoreBoard{
     margin: 20px;
     width: 80vw;
     height: 10vh;
+    padding: 10px;
+    justify-content: space-evenly;
+}
+#scoreBoard img{
+    width: 40px;
+}
+#finalScore{
+    padding-top: 50%;
+    display: none;
+    color: white;
+    background-color: light;
+    height: 100%;
+    width: 100%;
 }
 
 @keyframes gameBorder {

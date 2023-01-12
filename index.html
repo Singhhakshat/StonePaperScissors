@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>StonePaperScissors</title>
+    <link rel="shortcut icon" href="media/game-icon.png" type="image/x-icon">
+    <title>Stone-Paper-Scissors</title>
 </head>
 <body>
     <div class="flex" id="container">
@@ -15,20 +16,41 @@
                 <h1 id="round" class="border"></h1>
                 <hr>
                 <div id="game" class="">
-                    <h2>choose..</h2>
-                    <img src="media/rock.png" alt="" class="border" onclick="makePlayerSelection(1,0,0)" id="rockSelect">
-                    <img src="media/paper.png" alt="" class="border" onclick="makePlayerSelection(0,1,0)" id="paperSelect">
-                    <img src="media/scissors.png" alt="" class="border" onclick="makePlayerSelection(0,0,1)" id="scissorsSelect">
+                    <!-- <div>
+                        <h2>choose..</h2>
+                        <img src="media/rock.png" alt="" class="border" onclick="makePlayerSelection('Rock')" id="rockImage">
+                        <img src="media/paper.png" alt="" class="border" onclick="makePlayerSelection('Paper')" id="paperImage">
+                        <img src="media/scissors.png" alt="" class="border" onclick="makePlayerSelection('Scissors')" id="scissorsImage">
+                        <form action=""></form>
+                    </div> -->
+                    <div id="show" class="border flex">
+                        <div id="playerChoice" class="makeSpace"></div>
+                        <div id="computerChoice" class="makeSpace"></div>
+                        <div id="status" class="makeSpace border"></div>
+                    </div>
+                    <div id="finalScore" class="border flex">
+                        <p id="finalMessage"></p>
+                        <p>Refresh page to restart</p>
+                    </div>
                 </div>
                 <div id="scoreBoard" class="border flex">
-                    <div id="round1" class="border"></div>
-                    <div id="round2"></div>
-                    <div id="round3">
+                        <div id="round1" class="">
+                            <img src="media/unplayedRound.png" id="roundOneImage">
+                            <p>round 1</p>
+                        </div>
+                        <div id="round2" class="">
+                            <img src="media/unplayedRound.png" id="roundTwoImage">
+                            <p>round 2</p>
+                        </div>
+                        <div id="round3" class="">
+                            <img src="media/unplayedRound.png" id="roundThreeImage">
+                            <p>round 3</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="scr.js"></script>
+        <script src="script.js"></script>
     </div>
 </body>
 </html>
