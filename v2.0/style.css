@@ -114,3 +114,10 @@
         height: 100vh;
     }
   }
+
+@media screen and (min-width: 500px) {
+    #title{
+        text-align: center;
+        font-size: 12vh;
+    }
+}
