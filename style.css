@@ -2,88 +2,122 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    background-color: whitesmoke;
 }
 
-#container{
-    height: 100vh;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
+.pointer:hover{
+    cursor: pointer;
 }
-.StartGameAnimation{
-    animation-name: gameBorder;
-    animation-duration: 1s;
+
+.border{
+    border: 1px solid black;
 }
+
 .flex{
     display: flex;
 }
-.border{
-    border: 2px solid black;
+
+.hidden{
+    display: none;
 }
-#startButton{
+
+.imgSize{
+    width: 15rem;
+    margin: 5px;
+}
+
+.horizontalRule{
+    height: 2px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 70%;
+    margin: 10px;
+}
+.purpleText{
+    color: rgb(17,0,102);
+}
+.greenText{
+    color: rgb(26,135,13);
+}
+
+
+
+#title{
+    height: 60vh;
+    font-size: 5rem;
+    padding: 4rem;
+}
+#startGame{
+    margin: 10px;
+    width: 100%;
+    width: 100%;
+}
+#playerSelect{
+    flex-direction: column;
+    padding: 5%;
+}
+#gameScore{
+    width: 70%;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#nextRound{
+    padding: 10px;
+    background-color: rgb(26,135,13);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#gameContainer{
     width: 60vw;
-    height: 10vh;
+    height: 5vh;
+    margin: auto;
     text-align: center;
     font-weight: 600;
     justify-content: center;
     align-items: center;
-}
-
-
-#gameContainer{
-    display: none;
-    flex-direction: column;
-}
-#round{
-    margin: 20px;
-    background-color: black;
-    color: white;
-}
-#game{
-    margin: 20px;
-    height: 50vh;
-}
-/* #game img{
-    margin: 20px;
-    padding: 10px;
-} */
-#show{
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
     justify-content: center;
+    flex-direction: column;
 }
-
-.makeSpace{
-    padding: 20px;    
-}
-
-#scoreBoard{
-    margin: 20px;
-    width: 80vw;
-    height: 10vh;
+#result{
     padding: 10px;
-    justify-content: space-evenly;
+    font-size: 1.1rem;
 }
-#scoreBoard img{
-    width: 40px;
+#endGame{
+    color: black;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
 }
-#finalScore{
-    padding-top: 50%;
-    display: none;
-    color: white;
-    background-color: light;
-    height: 100%;
-    width: 100%;
+#finalText{
+    font-size: 2rem;
+}
+#restart{
+    padding: 10px;
+    font-weight: 700;
 }
 
+
+.StartGameAnimation{
+    animation-name: gameBorder;
+    animation-duration: 1s;
+}
 @keyframes gameBorder {
     from {
         width: 60vw;
-        height: 10vh;
+        height: 5vh;
     }
     to {
         width: 100vw;
         height: 100vh;
     }
   }
+
+@media screen and (min-width: 500px) {
+    #title{
+        text-align: center;
+        font-size: 12vh;
+    }
+}
